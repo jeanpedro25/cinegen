@@ -1,5 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { createCinegenApiHandler } from "../../server/sogniBackend";
+// A extensão explícita faz a Vercel incluir e transpilar este módulo junto
+// com a função, em vez de deixá-lo como import externo do runtime ESM.
+import { createCinegenApiHandler } from "../../server/sogniBackend.ts";
 
 export const config = {
   maxDuration: 60,
