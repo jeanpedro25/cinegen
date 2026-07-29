@@ -772,3 +772,42 @@ export function sogniBackendPlugin(
     },
   };
 }
+
+/**
+ * Adaptador para ambientes serverless (Vercel). Mantém o mesmo contrato das
+ * rotas locais para que o front-end não precise conhecer onde está rodando.
+ */
+export function createCinegenApiHandler(
+  sogniApiKey: string,
+  geminiApiKey: string,
+  engineUrl = "",
+) {
+  const routes: Record<string, ReturnType<typeof createImageHandler>> = {
+    "/api/cinegen/image": createImageHandler(sogniApiKey, engineUrl),
+    "/api/cinegen/video": createVideoHandler(sogniApiKey, engineUrl),
+    "/api/cinegen/transcribe": createTranscriptionHandler(geminiApiKey),
+    "/api/cinegen/flow/status": createFlowStatusHandler(),
+    "/api/cinegen/flow/heartbeat": createFlowHeartbeatHandler(),
+    "/api/cinegen/flow/open": createFlowOpenHandler(),
+    "/api/cinegen/flow/jobs/next": createFlowNextJobHandler(),
+    "/api/cinegen/flow/jobs/update": createFlowJobUpdateHandler(),
+    "/api/cinegen/flow/jobs/cancel": createFlowJobCancelHandler(),
+    "/api/cinegen/flow/jobs": createFlowJobsHandler(),
+  };
+
+  return async (request: IncomingMessage, response: ServerResponse) => {
+    const pathname = new URL(request.url || "/", "https://cinegen.local").pathname;
+    const route = routes[pathname];
+    if (route) {
+      await route(request, response);
+      return;
+    }
+
+    if (pathname === "/api/cinegen/media") {
+      await createMediaProxyHandler()(request, response);
+      return;
+    }
+
+    sendJson(response, 404, { error: "Rota CineGen não encontrada." });
+  };
+}
