@@ -1,0 +1,8 @@
+{
+  "name": "CineGen AI Studio",
+  "description": "Um estúdio profissional de storyboard e animação stop-motion movido a IA com Gemini Multimodal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

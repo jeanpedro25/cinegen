@@ -1,0 +1,122 @@
+
+> cinegen-ai-studio@0.0.0 preview
+> vite preview --configLoader runner --host 0.0.0.0 --port 3002 --strictPort
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3002[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.18.3:[1m3002[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.56.1:[1m3002[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+WebSocket error: ErrorEvent {
+  [Symbol(kTarget)]: WebSocket {
+    _events: [Object: null prototype] {
+      error: [Function],
+      message: [Function],
+      open: [Function],
+      close: [Function]
+    },
+    _eventsCount: 4,
+    _maxListeners: undefined,
+    _binaryType: 'nodebuffer',
+    _closeCode: 1006,
+    _closeFrameReceived: false,
+    _closeFrameSent: false,
+    _closeMessage: <Buffer >,
+    _closeTimer: null,
+    _errorEmitted: true,
+    _extensions: {},
+    _paused: false,
+    _protocol: '',
+    _readyState: 2,
+    _receiver: null,
+    _sender: null,
+    _socket: null,
+    _bufferedAmount: 0,
+    _isServer: false,
+    _redirects: 0,
+    _autoPong: true,
+    _closeTimeout: 30000,
+    _url: 'wss://socket.sogni.ai/?appId=7d2b9f16-a3f4-4e7c-88f2-5b9f66be45e3&appSource=cinegen-ai-studio&socketEventSubscriptions=%7B%22modelAvailability%22%3Afalse%7D&clientName=Sogni%2F3.0.0+%28sogni-client%29+5.1.0&clientType=artist&forceWorkerId=fast',
+    _req: null,
+    [Symbol(shapeMode)]: false,
+    [Symbol(kCapture)]: false
+  },
+  [Symbol(kType)]: 'error',
+  [Symbol(kError)]: AggregateError [EACCES]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'EACCES',
+    [errors]: [ [Error], [Error], [Error], [Error], [Error], [Error] ]
+  },
+  [Symbol(kMessage)]: ''
+}
+node:internal/deps/undici/undici:13510
+      Error.captureStackTrace(err);
+            ^
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:13510:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  [cause]: AggregateError [EACCES]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'EACCES',
+    [errors]: [
+      Error: connect EACCES 2606:4700:20::681a:c63:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '2606:4700:20::681a:c63',
+        port: 443
+      },
+      Error: connect EACCES 172.67.74.195:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '172.67.74.195',
+        port: 443
+      },
+      Error: connect EACCES 2606:4700:20::ac43:4ac3:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '2606:4700:20::ac43:4ac3',
+        port: 443
+      },
+      Error: connect EACCES 104.26.12.99:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '104.26.12.99',
+        port: 443
+      },
+      Error: connect EACCES 2606:4700:20::681a:d63:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '2606:4700:20::681a:d63',
+        port: 443
+      },
+      Error: connect EACCES 104.26.13.99:443
+          at createConnectionError (node:net:1678:14)
+          at afterConnectMultiple (node:net:1708:16) {
+        errno: -4092,
+        code: 'EACCES',
+        syscall: 'connect',
+        address: '104.26.13.99',
+        port: 443
+      }
+    ]
+  }
+}
+
+Node.js v22.18.0
