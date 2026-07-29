@@ -1,0 +1,47 @@
+CINEGEN FLOW CONNECTOR 2.0
+
+Este conector permite que o CineGen envie cada prompt diretamente para a conta
+Google Flow que já está autenticada no Chrome ou Microsoft Edge. A imagem
+gerada volta automaticamente para a cena do CineGen. Sua senha, cookies e
+tokens não são copiados nem enviados ao CineGen.
+
+ATUALIZAÇÃO PARA QUEM JÁ INSTALOU
+
+1. Abra chrome://extensions (ou edge://extensions).
+2. Localize "CineGen Flow Connector".
+3. Clique em "Recarregar".
+4. Confirme que a versão mostrada é 2.0.0.
+5. Abra um projeto em https://labs.google/fx/pt/tools/flow e mantenha a aba aberta.
+6. No CineGen, escolha "Google Flow" em Estilo visual.
+7. Marque a autorização de créditos e clique em "Processar projeto".
+
+PRIMEIRA INSTALAÇÃO
+
+1. Deixe a pasta flow-connector-extension em um local permanente.
+2. Abra chrome://extensions (ou edge://extensions).
+3. Ative "Modo do desenvolvedor".
+4. Clique em "Carregar sem compactação".
+5. Selecione a pasta flow-connector-extension.
+6. Abra o Google Flow, entre na conta e abra ou crie um projeto.
+7. Abra o CineGen em http://localhost:3002.
+
+FUNCIONAMENTO
+
+- O dashboard mostra quando a aba do Google Flow está conectada.
+- Cada cena é enviada separadamente para o Flow, em fila.
+- O prompt de estilo acompanha o prompt exclusivo de cada cena.
+- A imagem pronta é transferida automaticamente para o CineGen.
+- As cenas marcadas como V continuam sendo animadas pela API LTX-2.3 do CineGen.
+- Se a conta ou a extensão ficarem indisponíveis, a cena continua no motor
+  interno Sogni/Krea sem interromper o projeto.
+- O botão Cancelar encerra também a tarefa pendente no conector.
+- Uma tarefa em andamento é recuperada depois de recarregar a página do Flow.
+- A geração no Flow usa os créditos e limites da própria conta conectada.
+- O conector não clica em "Aprovar e não perguntar de novo".
+
+IMPORTANTE
+
+O Google não oferece uma API pública do Flow para consumir os créditos da
+interface. Por isso, a conexão direta funciona pela aba autenticada e requer
+que essa aba permaneça aberta durante a geração. Se o Google alterar os
+controles da página, o conector poderá precisar de atualização.

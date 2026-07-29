@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "CineGen Flow Connector",
+  "version": "2.0.0",
+  "description": "Conector resiliente entre a conta Google Flow e o CineGen, com detecção real, recuperação, cancelamento e fallback interno.",
+  "permissions": ["tabs", "storage", "alarms", "scripting"],
+  "host_permissions": [
+    "https://labs.google/*",
+    "https://flow.google/*",
+    "https://*.googleusercontent.com/*",
+    "http://localhost:3002/*",
+    "http://127.0.0.1:3002/*",
+    "http://localhost:3003/*",
+    "http://127.0.0.1:3003/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:3002/*",
+        "http://127.0.0.1:3002/*",
+        "http://localhost:3003/*",
+        "http://127.0.0.1:3003/*"
+      ],
+      "js": ["local-bridge.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://labs.google/fx/*",
+        "https://labs.google/flow/*",
+        "https://labs.google/*",
+        "https://flow.google/*"
+      ],
+      "js": ["flow-agent.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "CineGen Flow Connector"
+  }
+}
